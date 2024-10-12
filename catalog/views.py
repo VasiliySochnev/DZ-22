@@ -14,10 +14,10 @@ def contacts(request):
 #         name = request.POST.get('name')
 #         message = request.POST.get('message')
 #         return HttpResponse(f'Спасибо, {name}! Сообщение получено.')
-#     return render(request, "app/contacts.html")
+#     return render(request, "contacts.html")
 #
 # def home(request):
 #     if request.method == 'GET':
-#         return render(request, 'app/home.html')
+#         return render(request, 'home.html')
 
 
