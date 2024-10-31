@@ -1,0 +1,26 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name_category": "Овощи",
+        "descriptions_category": "Раздел для овощей"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name_category": "Фрукты",
+        "descriptions_category": "Раздел для фруктов"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name_category": "Напитки",
+        "descriptions_category": "Раздел для напитков"
+    }
+}
+]
