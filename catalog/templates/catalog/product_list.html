@@ -1,0 +1,24 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        {% for product in products %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <img src="{{ product.image | media_filter }}" class="img-fluid" alt="Адаптивные изображения">
+                    <h4 class="my-0 font-weight-normal">{{ product.name_product }}</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li> Описание:  {{ product.description_product | truncatechars:100 }}</li>
+                    </ul>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_info' product.pk %}" role="button">Купить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
