@@ -7,18 +7,14 @@
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <img src="{{ catalog.photos | media_filter }}">
+                    <img src="{{ product.image | media_filter }}" class="img-fluid" alt="Адаптивные изображения">
                     <h4 class="my-0 font-weight-normal">{{ product.name_product }}</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">{{ product.purchase_price }} руб.</h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li> Категория: {{ product.category }}</li>
-                        <li> Описание:  {{ product.description_product }}</li>
-                        <li> Дата создания: {{ product.created_at }}</li>
-                        <li> Дата последнего изменения: {{ product.updated_at }}</li>
+                        <li> Описание:  {{ product.description_product | truncatechars:100 }}</li>
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_info' product.pk %}" role="button">Купить</a>
                 </div>
             </div>
         </div>
