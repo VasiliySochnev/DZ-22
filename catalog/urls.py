@@ -8,9 +8,9 @@ from django.conf.urls.static import static
 app_name = CatalogConfig.name
 
 urlpatterns = [
-    path("", views.product_list, name='product_list'),
-    path("product_info/<int:pk>/", views.product_info, name='product_info'),
-    path("contacts/", views.contacts, name='contacts'),
+    path("", views.ProductListView.as_view(), name='product_list'),
+    path("product_detail/<int:pk>/", views.ProductDetailView.as_view(), name='product_detail'),
+    path("contacts/", views.ContactsTemplateView.as_view(), name='contacts'),
 ]
 
 if settings.DEBUG:
