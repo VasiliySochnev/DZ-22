@@ -7,7 +7,7 @@
         {% for my_blog in my_blogs %}
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ my_blog.preview | media_filter }}">
+            <img src="{{ my_blog.preview | media_filter }}" class="img-fluid" alt="Адаптивные изображения">
             <div class="card-body">
               <h4 class="card-text">{{ my_blog.title | title }}</h4>
               <p class="card-text">Содержимое статьи:  {{ my_blog.content }}</p>
