@@ -1,0 +1,28 @@
+{% extends 'my_blogs/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="album py-5 bg-body-tertiary" xmlns="http://www.w3.org/1999/html">
+    <div main class="container">
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="col-lg-12 px-0">
+          <h1 class="display-15 fst-italic">{{ my_blog.title | title }}</h1>
+
+            <img src="{{ my_blog.preview | media_filter }}" class="img-fluid" alt="Адаптивные изображения">
+            <div class="lead my-3">
+              <h2 class="display-15 fst-italic">{{ my_blog.content }}</h2>
+              <p class="lead my-3">Дата создания: {{ my_blog.created_at }}</p>
+              <p class="lead my-3">Количество просмотров:  {{ my_blog.number_of_views }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                <div class="btn-group">
+                   <a class="btn btn-primary" href="{% url 'my_blog:my_blogs_list' %}" role="button">Вернуться</a>
+                   <a class="btn btn-success" href="{% url 'my_blog:my_blog_update' my_blog.pk %}" role="button">Редактировать</a>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
