@@ -12,6 +12,7 @@ class Category(models.Model):
         verbose_name_plural = 'категории'
         ordering = ['name_category']
 
+
 class Product(models.Model):
     name_product = models.CharField(max_length=100, verbose_name='наименование')
     description_product = models.CharField(max_length=100, verbose_name='описание')
