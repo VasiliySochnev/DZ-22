@@ -41,7 +41,6 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('catalog:product_list')
 
 
-
 class ContactsTemplateView(TemplateView):
     template_name = 'catalog/contacts.html'
 

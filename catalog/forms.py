@@ -51,13 +51,8 @@ class ProductForm(forms.ModelForm):
         bad_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
 
-        if name_product in bad_words:
+        if name_product.lower() in bad_words:
             self.add_error('name_product', "Такие слова нельзя здесь использовать!")
 
-        if description_product in bad_words:
+        if description_product.lower() in bad_words:
             self.add_error('description_product', "Такие слова нельзя здесь использовать!")
-
-
-
-
-
