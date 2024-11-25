@@ -1,3 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
+
+class CustomUser(AbstractUser):
+    first_name = models.CharField(max_length=100, help_text='Имя')
+    last_name = models.CharField(max_length=100, help_text='Фамилия')
+    email = models.EmailField(unique=True, max_length=100, help_text='email')
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', ]
+
+    def __str__(self):
+        return self.email
