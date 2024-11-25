@@ -6,12 +6,11 @@ from .models import CustomUser
 class CustomUserCreationsForm(UserCreationForm):
     email = forms.EmailField(max_length=100, required=True)
     phone_number = forms.CharField(max_length=15, required=False, help_text='Необязательное поле. Введите номер телефона.')
-    username = forms.CharField(max_length=50, required=True)
     usable_password = None
 
     class Meta:
         model = CustomUser
-        fields = ['avatar', 'email', 'username', 'first_name', 'last_name', 'country', 'phone_number', 'password1', 'password2']
+        fields = ['avatar', 'email', 'first_name', 'last_name', 'country', 'phone_number', 'password1', 'password2']
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
