@@ -17,7 +17,7 @@ class RegisterView(CreateView):
 
     def send_welcome_email(self, user_email):
         subject = 'Добро пожаловать в наш сервис'
-        message = 'Спасибо, что зарегистрировались в нашем сервисе!'
+        message = 'Спасибо, что зарегистрировались в нашем Каталоге!'
         from_email = 'sochnevvasiliy1992@yandex.ru'
         recipient_list = [user_email,]
         send_mail(subject, message, from_email, recipient_list)
