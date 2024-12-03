@@ -86,11 +86,16 @@ DATABASES = {
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('PASSWORD'),
+        'OPTIONS': {"client_encoding": "utf8"},
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT')
     }
 }
-
+# print(DATABASES['default']['NAME'])
+# print(DATABASES['default']['USER'])
+# print(DATABASES['default']['PASSWORD'])
+# print(DATABASES['default']['HOST'])
+# print(DATABASES['default']['PORT'])
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -147,7 +152,7 @@ LOGIN_REDIRECT_URL = "catalog:product_list"
 
 LOGIN_URL = 'users:login'
 #
-# LOGOUT_REDIRECT_URL = "students:students_list"
+# LOGOUT_REDIRECT_URL = ""
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
