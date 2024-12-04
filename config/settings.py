@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog",
     "my_blog",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -85,11 +86,16 @@ DATABASES = {
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('PASSWORD'),
+        'OPTIONS': {"client_encoding": "utf8"},
         'HOST': os.getenv('HOST'),
         'PORT': os.getenv('PORT')
     }
 }
-
+# print(DATABASES['default']['NAME'])
+# print(DATABASES['default']['USER'])
+# print(DATABASES['default']['PASSWORD'])
+# print(DATABASES['default']['HOST'])
+# print(DATABASES['default']['PORT'])
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -139,3 +145,20 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+LOGIN_REDIRECT_URL = "catalog:product_list"
+
+LOGIN_URL = 'users:login'
+#
+# LOGOUT_REDIRECT_URL = ""
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'sochnevvasiliy1992@yandex.ru'
+EMAIL_HOST_PASSWORD = 'hhirlubevlorkxvn'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
