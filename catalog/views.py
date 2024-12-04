@@ -26,15 +26,15 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
-    success_url = reverse_lazy('catalog:product_detail')
+    success_url = reverse_lazy('catalog:product_list')
 
 
-    def form_valid(self, form):
-        product = form.save()
-        user = self.request.user
-        product.owner = user
-        product.save()
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     product = form.save()
+    #     user = self.request.user
+    #     product.owner = user
+    #     product.save()
+    #     return super().form_valid(form)
 
     def get_form_class(self):
         user = self.request.user
