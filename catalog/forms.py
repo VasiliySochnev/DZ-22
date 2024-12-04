@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['image', 'name_product', 'category', 'description_product', 'purchase_price',]
+        fields = ['image', 'name_product', 'category', 'description_product', 'purchase_price']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -35,6 +35,7 @@ class ProductForm(forms.ModelForm):
         })
 
 
+
     def clean_purchase_price(self):
         purchase_price = self.cleaned_data.get('purchase_price')
         if purchase_price < 0:
@@ -56,3 +57,9 @@ class ProductForm(forms.ModelForm):
 
         if description_product.lower() in bad_words:
             self.add_error('description_product', "Такие слова нельзя здесь использовать!")
+
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['unpublish_product']

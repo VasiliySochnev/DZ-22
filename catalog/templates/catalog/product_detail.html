@@ -17,7 +17,9 @@
                         <li> Дата создания: {{ object.created_at | date:"d M Y" }}</li>
                         <li> Дата последнего изменения: {{ object.updated_at | date:"d M Y" }}</li>
                     </ul>
+                    {% if user.is_authenticated or perms.catalog.can_unpublish_product %}
                     <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk  %}" role="button">Редактировать</a>
+                    {% endif %}
                     <a class="btn btn-primary" href="{% url 'catalog:product_list' %}" role="button">Главная</a>
                 </div>
             </div>
