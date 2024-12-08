@@ -32,13 +32,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy("catalog:product_list")
 
-    # def form_valid(self, form):
-    #     product = form.save()
-    #     user = self.request.user
-    #     product.owner = user
-    #     product.save()
-    #     return super().form_valid(form)
-
     def get_form_class(self):
         user = self.request.user
         if user == self.object.owner:
@@ -46,9 +39,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         if user.has_perm("catalog.can_unpublish_product"):
             return ProductModeratorForm
         raise PermissionDenied
-
-    # def get_success_url(self):
-    #     return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])
 
 
 class ProductListView(ListView):
@@ -124,28 +114,3 @@ class CategoryProductsListView(ListView):
         category_id = self.kwargs.get("category_id")
         self.category = get_object_or_404(Category, pk=category_id)
         return ProductService.get_published_products_by_category(category_id)
-
-
-# def product_list(request):
-#     products = Product.objects.all()
-#     context = {'products': products}
-#
-#     return render(request, 'catalog/product_list.html', context)
-
-# def contacts(request):
-#     return render(request, 'catalog/contacts.html')
-
-
-# def product_info(request, pk):
-#     product = get_object_or_404(Product, pk=pk)
-#     context = {'product': product}
-#
-#     return render(request, 'catalog/product_info.html', context)
-
-# def contacts(request):
-#     if request.method == 'POST':
-#         name = request.POST.get('name')
-#         message = request.POST.get('message')
-#         return HttpResponse(f'Спасибо, {name}! Сообщение получено.')
-#     return render(request, "contacts.html")
-#
