@@ -6,16 +6,20 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         User = get_user_model()
         user = User.objects.create(
-            email='sochnevvasiliy1992@gmail.com',
-            first_name='Vasiliy',
-            last_name='Sochnev',
+            email="sochnevvasiliy1992@gmail.com",
+            first_name="Vasiliy",
+            last_name="Sochnev",
         )
 
-        user.set_password('admin')
+        user.set_password("admin")
         user.is_active = True
         user.is_staff = True
         user.is_superuser = True
 
         user.save()
 
-        self.stdout.write(self.style.SUCCESS(f'Successfully created admin user with email {user.email}!'))
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"Successfully created admin user with email {user.email}!"
+            )
+        )
