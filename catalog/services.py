@@ -30,12 +30,15 @@ class ProductService:
         products = cache.get(cache_key)
 
         if products is None:
-            products = list(Product.objects.filter(category_id=category_id, unpublish_product=True))
+            products = list(
+                Product.objects.filter(category_id=category_id, unpublish_product=True)
+            )
             cache.set(cache_key, products, 60 * 1)
 
         return products
 
     @classmethod
     def get_published_products_by_category_name(cls, name_category):
-        return Product.objects.filter(name_category=name_category, unpublish_product=True)
-
+        return Product.objects.filter(
+            name_category=name_category, unpublish_product=True
+        )
