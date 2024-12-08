@@ -1,10 +1,9 @@
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from catalog.models import Product, Category
-from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from catalog.forms import ProductForm, ProductModeratorForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.cache import cache_page
@@ -125,7 +124,6 @@ class CategoryProductsListView(ListView):
         category_id = self.kwargs.get("category_id")
         self.category = get_object_or_404(Category, pk=category_id)
         return ProductService.get_published_products_by_category(category_id)
-
 
 
 # def product_list(request):

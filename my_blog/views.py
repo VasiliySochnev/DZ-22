@@ -1,5 +1,5 @@
 from my_blog.models import My_blog
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 
